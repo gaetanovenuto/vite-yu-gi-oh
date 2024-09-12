@@ -6,7 +6,12 @@
     3) Utilizzo del componente
 */
 
-import axios from 'axios';
+
+
+import AppHeader from '../src/components/appHeader.vue';
+import AppMain from '../src/components/appMain.vue';
+
+
 
 export default {
   data() {
@@ -15,24 +20,26 @@ export default {
     }
   },
   components: {
+    AppHeader,
+    AppMain,
     
   },
   created() {
-    axios
-      .get('URL')
-      .then()
+    
+    },
   }
-}
+
 </script>
 
 <!-- All'interno del template ci va un solo elemento -->
 <template> 
   <div>
-    
+    <AppHeader />
+    <AppMain />
   </div>
 </template>
 
-<style lang="scss" scoped>
-// Import all of Bootstrap's CSS
-@import "~bootstrap/scss/bootstrap";
+<style lang="scss">
+  // Import all of Bootstrap's CSS
+  @import "bootstrap/scss/bootstrap";
 </style>

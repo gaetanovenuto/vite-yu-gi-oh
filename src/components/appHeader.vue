@@ -3,7 +3,7 @@
 export default {
   data() {
     return {
-      message: 'Template Vite + Vue'
+      
     }
   }
 }
@@ -13,20 +13,30 @@ export default {
 <template> 
   <div>
     <header>
-        <h1> 
-            {{ message }}
-        </h1>
+        <img src="/img/logo.jpg" alt="Yu-Gi-Oh">
+        <div class="title"> 
+            Yu-Gi-Oh Api
+        </div>
     </header>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
-    background-color: aquamarine;
-    text-align: center;
-}
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 75px;
 
-h1 {
-    color: lightcoral;
+  img {
+    width: 150px;
+  }
+
+  .title {
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 32px;
+  }
+
 }
 </style>
