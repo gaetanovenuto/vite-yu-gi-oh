@@ -10,7 +10,7 @@ export default {
       store,
       searchArchetype: '',
       availableArchetypes: [
-      [
+      
         {
           archetype: "-Eyes Dragon"
         },
@@ -1688,7 +1688,7 @@ export default {
         {
           archetype: "Zoodiac"
         }
-]
+      
       ],
       fullURL: 'https://db.ygoprodeck.com/api/v7/cardinfo.php',
     }
@@ -1723,16 +1723,16 @@ export default {
     <div class="container">
       <div class="row">
         <div class="col py-3">
-          <select v-model="searchArchetype"  class="form-select" aria-label="Select">
+          <select v-model="searchArchetype" @change="performSearch()" class="form-select" aria-label="Select">
             <option value="" selected>Select Archetype</option>
-            <option v-for="(archetype, index) in availableArchetypes" :key="index" :value="availableArchetypes.archetype" @click="performSearch()">
-              {{ availableArchetypes.archetype }}
+            <option v-for="(archetype, index) in availableArchetypes" :key="index" :value="archetype.archetype">
+              {{ archetype.archetype }}
             </option>
           </select>
         </div>
         <div class="general-container">
           <div class="row cards-found fw-bold text-white d-flex align-items-center px-3">
-            Found X cards
+            Found {{ store.allCards.length }} cards
           </div>
           <div class="card-container w-100 py-5">
             <appSingleCard v-for="(card, index) in store.allCards" :key="index" :myCardName="card.name" :myCardImage="card.card_images[0].image_url" :myCardArchetype="card.archetype" />
@@ -1751,10 +1751,14 @@ export default {
 
     .form-select {
       width: 150px;
+      font-size: 12px;
+      padding: 8px;
 
       &:hover {
         cursor: pointer;
       }
+
+      
     }
 
     .general-container {
