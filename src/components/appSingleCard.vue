@@ -6,34 +6,38 @@
     3) Utilizzo del componente
 */
 
+import { store } from '../store.js'
+
 export default {
     data() {
         return {
-            
+            store
         }
     },
     props: {
-        singleCard: Object
+        myCardImage: String,
+        myCardArchetype: String,
+        myCardName: String
     },
     components: {
         
-        }
+    }
 }
 </script>
 
 <!-- All'interno del template ci va un solo elemento -->
 <template> 
-    <div class="single-card">
+    <div class="single-card d-flex flex-wrap">
         <div class="card-img">
-            <img :src="singleCard.card_images.image_url" alt="">
+            <img :src="myCardImage" :alt="myCardName">
         </div>
         <div class="card-info">
-            <div class="card-name">
-                {{ singleCard.name }}
-            </div>
-            <div class="card-type">
-
-            </div>
+            <h3 class="card-name text-center">
+                {{  myCardName }}
+            </h3>
+            <h4 class="card-type text-center">
+                {{ myCardArchetype }}
+            </h4>
         </div>
     </div>
 </template>
@@ -42,8 +46,21 @@ export default {
 @use '../assets/scss/partials/mixins.scss' as *;
 @use '../assets/scss/partials/variables.scss' as *;
 
-main {
-    
+.single-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc((100% / 4) - 15px);
+    height: 500px;
+
+    .card-img {
+        display: flex;
+        justify-content: center;
+        img {
+            height: 350px;
+            
+        }
+    }
 }
 
 </style>

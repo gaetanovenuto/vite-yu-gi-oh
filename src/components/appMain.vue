@@ -1,7 +1,6 @@
 <script>
 
-import axios from 'axios';
-import { store } from '../store.js';
+import { store } from '../store.js'
 import appSingleCard from './appSingleCard.vue';
 
 export default {
@@ -14,17 +13,7 @@ export default {
     appSingleCard
   },
   created() {
-    axios
-      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-      .then((res) => {
-        console.log('Risposta API', res);
-        console.log('Data della risposta', res.data);
-        console.log('Tutte le carte', res.data.data);
-
-        this.store.allCards = res.data.data;
-        console.log(this.store.allCards)
-      }
-    ) 
+    
   }
 }
 </script>
@@ -46,11 +35,8 @@ export default {
           <div class="row cards-found fw-bold text-white d-flex align-items-center px-3">
             Found X cards
           </div>
-          <div class="card-container">
-            <appSingleCard 
-              v-for="(cards, index) in store.allCards" 
-              :key="index"
-              :singleCard="store.allCards" />
+          <div class="card-container w-100">
+            <appSingleCard v-for="(card, index) in store.allCards" :key="index" :myCardName="card.name" :myCardImage="card.card_images[0].image_url" :myCardArchetype="card.archetype" />
           </div>
         </div>
       </div>
@@ -60,7 +46,7 @@ export default {
 
 <style lang="scss" scoped>
   main {
-    height: calc(100vh - 75px);
+    height: calc(100% - 75px);
     width: 100%;
     background-color: $myOrange;
 
@@ -83,8 +69,8 @@ export default {
       }
 
       .card-container {
-        background-color: blue;
-        
+        display: flex;
+        flex-wrap: wrap;    
       }
     }
   }
