@@ -32,12 +32,12 @@ export default {
             <img :src="myCardImage" :alt="myCardName">
         </div>
         <div class="card-info">
-            <h3 class="card-name text-center">
+            <div class="card-name text-center">
                 {{  myCardName }}
-            </h3>
-            <h4 class="card-type text-center">
+            </div>
+            <div class="card-type text-center">
                 {{ myCardArchetype }}
-            </h4>
+            </div>
         </div>
     </div>
 </template>
@@ -51,14 +51,30 @@ export default {
     flex-direction: column;
     align-items: center;
     width: calc((100% / 4) - 15px);
-    height: 500px;
+    height: 450px;
+    margin: 0;
 
     .card-img {
         display: flex;
         justify-content: center;
         img {
-            height: 350px;
-            
+            height: 300px;
+        }
+    }
+
+    .card-info {
+        padding-top: 15px;
+        text-align: center;
+        width: 90%;
+
+        .card-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .card-type {
+            padding-top: 10px;
+            font-weight: 500;   
         }
     }
 }
